@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Tomehachi</title>
+		<link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/assets/default.css">
+		<style>
+		#digital-clock {
+			font-size: 32px;
+			font-weight: bold;
+		}
+		</style>
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<h1>ただの時計でございます</h1>
+					<hr>
+					<div class="well well-lg">
+						<div id="digital-clock"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="/assets/jquery/jquery-2.2.0.min.js"></script>
+		<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/assets/d3/d3.min.js"></script>
+		<script src="/assets/default.js"></script>
+		<script>
+		var getTime = function() {
+			date = new Date();
+			return {
+				year : date.getFullYear(),
+				month : date.getMonth() + 1,
+				day : date.getDate(),
+				hour : date.getHours(),
+				minute : date.getMinutes(),
+				second : date.getSeconds()
+			}
+		}
+		var displayDigitalClock = function() {
+			time = getTime();
+			$("#digital-clock").text(
+				time.year + "/" +
+				(time.month < 10 ? "0" + time.month : time.month) + "/" +
+				(time.day < 10 ? "0" + time.day : time.day) + " " +
+				(time.hour < 10 ? "0" + time.hour : time.hour) + ":" +
+				(time.minute < 10 ? "0" + time.minute : time.minute) + ":" +
+				(time.second < 10 ? "0" + time.second : time.second)
+			);
+			setTimeout("displayDigitalClock()", 1000);
+		}
+
+		$(function() {
+			displayDigitalClock();
+		});
+		</script>
+	</body>
+</html>
