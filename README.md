@@ -1,6 +1,6 @@
 # tomehachi.github.io
 
-Sorry but doc is going to be written in Japanese.
+Sorry but this doc is going to be written in Japanese.
 
 ## 概要
 
